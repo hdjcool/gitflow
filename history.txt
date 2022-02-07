@@ -1,0 +1,60 @@
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git checkout -b develop
+Switched to a new branch 'develop'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git commit -am "work 2"
+[develop 252ce90] work 2
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git commit -am "work 3"                                                                                                                                                                   
+[develop 6749412] work 3
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git checkout -b release_0.2
+Switched to a new branch 'release_0.2'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (release_0.2)
+$ git add release-02.txt 
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (release_0.2)
+$ git commit -m 'modify A,B,C"
+> 
+> '
+[release_0.2 316217b] modify A,B,C"
+ 1 file changed, 3 insertions(+)
+ create mode 100644 release-02.txt
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (release_0.2)
+$ git checkout master 
+Switched to branch 'master'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git checkout develop 
+Switched to branch 'develop'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git merge release_0.2
+Updating 6749412..316217b
+Fast-forward
+ release-02.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+ create mode 100644 release-02.txt
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git checkout master
+Switched to branch 'master'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git merge --no-ff release_0.2 
+Merge made by the 'ort' strategy.
+ main.txt       | 4 +++-
+ release-02.txt | 3 +++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+ create mode 100644 release-02.txt
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git branch -d release_0.2 
+Deleted branch release_0.2 (was 316217b).
