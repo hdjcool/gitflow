@@ -58,3 +58,138 @@ Merge made by the 'ort' strategy.
 hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
 $ git branch -d release_0.2 
 Deleted branch release_0.2 (was 316217b).
+
+//----------1.0---------------------------------------
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git add 0.2
+fatal: pathspec '0.2' did not match any files
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git tag 0.2
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git checkout develop 
+Switched to branch 'develop'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git branch short
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git branch long
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git checkout short
+Switched to branch 'short'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (short)
+$ git add short.txt 
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (short)
+$ git commit -m 's1'
+[short beb2028] s1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 short.txt
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (short)
+$ git commit -m 's2'
+On branch short
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   short.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (short)
+$ git commit -am 's2'
+[short d90e436] s2
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (short)
+$ git checkout long 
+Switched to branch 'long'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (long)
+$ git add long.txt
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (long)
+$ git commit -am '11'
+[long 13cf1f5] 11
+ 1 file changed, 1 insertion(+)
+ create mode 100644 long.txt
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (long)
+$ git commit -am '12'
+[long 5f5dc8e] 12
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (long)
+$ git checkout develop 
+Switched to branch 'develop'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git merge --no-ff short 
+Merge made by the 'ort' strategy.
+ short.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 short.txt
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git branch -d short 
+Deleted branch short (was d90e436).
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git checkout -b release_1.0
+Switched to a new branch 'release_1.0'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (release_1.0)
+$ git commit -am 's3 bug fix'
+[release_1.0 cd16386] s3 bug fix
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (release_1.0)
+$ git commit -am 'work 4'
+[release_1.0 e8fe33e] work 4
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (release_1.0)
+$ git commit -am 'work 5'
+[release_1.0 1540721] work 5
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (release_1.0)
+$ git checkout develop 
+Switched to branch 'develop'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git merge release_1.0 
+Updating c6140b7..1540721
+Fast-forward
+ main.txt  | 4 +++-
+ short.txt | 3 ++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git reset --hard e8fe33e9b8e10f049625e5c484918de72b07fd46
+HEAD is now at e8fe33e work 4
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git merge --no-ff release_1.0
+Merge made by the 'ort' strategy.
+ main.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git checkout master 
+Switched to branch 'master'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git merge --no-ff release_1.0 
+Merge made by the 'ort' strategy.
+ main.txt  | 4 +++-
+ short.txt | 3 +++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+ create mode 100644 short.txt
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git tag 1.0
