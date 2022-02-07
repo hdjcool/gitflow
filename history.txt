@@ -193,3 +193,89 @@ Merge made by the 'ort' strategy.
 
 hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
 $ git tag 1.0
+
+
+
+//----- tag 1.1 -------------------------------------
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git branch -d release_1.0 
+Deleted branch release_1.0 (was 1540721).
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git checkout long 
+Switched to branch 'long'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (long)
+$ git commit -am 'l3'
+On branch long
+nothing to commit, working tree clean
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (long)
+$ git commit -am 'l3'
+[long 44dd2f3] l3
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (long)
+$ git commit -am 'l4'
+[long c66959d] l4
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (long)
+$ git checkout develop 
+Switched to branch 'develop'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git commit -am 'work6'
+[develop e140831] work6
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git checkout master 
+Switched to branch 'master'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git checkout -b hotfixes_1.1
+Switched to a new branch 'hotfixes_1.1'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (hotfixes_1.1)
+$ git add hotfix_1.1.txt 
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (hotfixes_1.1)
+$ git commit -am 'hotfix_1.1'
+[hotfixes_1.1 e045d78] hotfix_1.1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hotfix_1.1.txt
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (hotfixes_1.1)
+$ git commit -am 'hotfix_1.1'
+[hotfixes_1.1 00ffccd] hotfix_1.1
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (hotfixes_1.1)
+$ git checkout develop 
+Switched to branch 'develop'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git merge --no-ff hotfixes_1.1 
+Merge made by the 'ort' strategy.
+ history.txt    | 195 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ hotfix_1.1.txt |   1 +
+ short.txt      |   3 +-
+ 3 files changed, 198 insertions(+), 1 deletion(-)
+ create mode 100644 history.txt
+ create mode 100644 hotfix_1.1.txt
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (develop)
+$ git checkout master 
+Switched to branch 'master'
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$ git merge --no-ff hotfixes_1.1 
+Merge made by the 'ort' strategy.
+ hotfix_1.1.txt | 1 +
+ short.txt      | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+ create mode 100644 hotfix_1.1.txt
+
+hdj@HDJ-HANSUNG MINGW64 /d/study/git/gitflow (master)
+$git tag 1.1
